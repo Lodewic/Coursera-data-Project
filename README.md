@@ -1,9 +1,3 @@
----
-title: "README"
-author: "Lodewic van Twillert"
-date: "Thursday, January 22, 2015"
----
-
 # README
 
 
