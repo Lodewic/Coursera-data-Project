@@ -74,6 +74,4 @@ data$activity <- as.character(activity_lab$V2)[data$activity]
 # Create a tidy dataset that takes the average of each value, grouped per
 # subject and activity. Finally write it to a file
 tidy_data <- ddply(data,.(subject, activity),numcolwise(mean))
-write.table(tidy_data, file='tidy_data.txt')
-
-
+write.table(tidy_data, file='tidy_data.txt',row.name=FALSE)
