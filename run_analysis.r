@@ -1,6 +1,6 @@
 #
 # Title:  "Getting and cleaning data - Course project"
-# Date:   22-Jan-2015
+# Date:   25-Jan-2015
 # File:   %run_analysis.R
 # Author: "Lodewic van Twillert"
 #
@@ -11,8 +11,7 @@ library(dplyr)
 
 ## LOADING AND MERGING THE DATA
 
-# Download and unzip dataset. Comment this part out if the dataset is already in
-# the working directory
+# Download and unzip dataset if it isn't already in the working directory.
 if (!'UCI HAR Dataset' %in% dir()) {
     url <- 'https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
     download.file(url, destfile='Dataset.zip')
