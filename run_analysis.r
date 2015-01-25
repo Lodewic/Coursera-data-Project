@@ -6,15 +6,18 @@
 #
 
 # Load used packages
+library(plyr)
 library(dplyr)
 
 ## LOADING AND MERGING THE DATA
 
 # Download and unzip dataset. Comment this part out if the dataset is already in
 # the working directory
-url <- 'https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
-download.file(url, destfile='Dataset.zip')
-unzip('Dataset.zip')
+if (!'UCI HAR Dataset' %in% dir()) {
+    url <- 'https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
+    download.file(url, destfile='Dataset.zip')
+    unzip('Dataset.zip')}
+
 
 # Read the training and test datasets
 # Read the label and subject data
@@ -39,9 +42,6 @@ data <- rbind(test,train)
 # measurement
 # NOTE: This will also include any 'meanFreq()' measurements
 features <- read.table('./UCI HAR Dataset/features.txt')
-feat_include <- xor(sapply(features$V2, grepl, pattern='mean'),
-                    sapply(features$V2, grepl, pattern='std'))
-
 feat_include <- sapply(features$V2, grepl, pattern='std') |
                 sapply(features$V2, grepl, pattern='mean')
 data <- data[,which(feat_include)]
